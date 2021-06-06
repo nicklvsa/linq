@@ -20,6 +20,9 @@ const App = () => {
           <Route path="/enter/:pathUUID">
             <Queue server={server} />
           </Route>
+          <Route path="/enter/:pathUUID/:userUUID">
+            <Queue server={server} />
+          </Route>
         </Switch>
       </div>
     </Router>
