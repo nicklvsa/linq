@@ -1,13 +1,13 @@
 import { Response } from "express";
 
 interface JSONResponse {
-    message: string;
+    data: any;
     successful: boolean;
 }
 
-export const buildResponse = (resp: Response, code: number, message: string, successful: boolean): Response => {
+export const buildResponse = <T>(resp: Response, code: number, data: T, successful: boolean): Response => {
     const response: JSONResponse = {
-        message: message,
+        data: data,
         successful: successful,
     };
 

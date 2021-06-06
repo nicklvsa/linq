@@ -5,7 +5,7 @@ export enum LogLevel {
     FATAL,
 };
 
-export const log = (msg: any, level: LogLevel, requestID?: string) => {
+export const log = <T>(msg: T, level: LogLevel, requestID?: string) => {
     let template = `
         [${LogLevel[level].toString()}] - ${msg}
     `.trim();
