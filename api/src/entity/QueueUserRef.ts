@@ -8,17 +8,17 @@ export class QueueUserRef extends BaseEntity {
     @Column({
         unique: true,
         default: 'uuid_generate_v4()',
-        type: 'uuid',
+        type: 'text',
     })
     queue_user_ref_id!: string;
 
     @PrimaryColumn({
-        type: 'uuid',
+        type: 'text',
     })
     queue_id!: string;
 
     @PrimaryColumn({
-        type: 'uuid',
+        type: 'text',
     })
     user_id!: string;
 }

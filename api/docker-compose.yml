@@ -25,7 +25,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       
-  match-api:
+  queue-api:
     build:
       context: .
       dockerfile: Dockerfile
@@ -42,7 +42,7 @@ services:
       - ./:/queueapi
     ports:
       - 8080:8080
-    command: /queueapi/scripts/wait.sh db:5432 -- /bin/sh -c "yarn start"
+    command: /queueapi/scripts/wait.sh db:5432 -- /bin/sh -c "yarn dev"
 
 networks:
     queueapi:

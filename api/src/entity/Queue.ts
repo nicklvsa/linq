@@ -8,12 +8,12 @@ export class Queue extends BaseEntity {
     @Column({
         unique: true,
         default: 'uuid_generate_v4()',
-        type: 'uuid',
+        type: 'text',
     })
     queue_id!: string;
 
     @PrimaryColumn({
-        type: 'uuid',
+        type: 'text',
     })
     owner_user_id!: string;
 

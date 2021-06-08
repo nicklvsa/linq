@@ -32,8 +32,8 @@ const portNum = parseInt(envs?.SERVER_PORT || '8080', 10);
 
 // setup express and middleware
 const app = express();
-app.use(express.json);
-app.use(helmet);
+app.use(express.json());
+app.use(helmet());
 app.use(cors());
 
 // define all routes

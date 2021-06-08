@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Queue } from "src/entity/Queue";
+import { Queue } from "../../entity/Queue";
 import { buildResponse } from "../../utils";
 
 export const handleQueue = async (req: Request, resp: Response) => {

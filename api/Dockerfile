@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14 as dev
 
 # Create app directory
 WORKDIR /queueapi
@@ -7,12 +7,10 @@ WORKDIR /queueapi
 COPY package*.json ./
 
 RUN yarn
-# If you are building your code for production
-# RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
 
 EXPOSE 8080
 
-CMD [ "node", "index.js" ]
+CMD ["yarn", "dev"]
