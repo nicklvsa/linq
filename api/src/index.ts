@@ -3,17 +3,17 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import { log, LogLevel } from './logger';
-import { defineEnvs } from './config';
+import { GlobalConfig, Nullable } from './config';
 import { handleQueue } from './routes/queue/route';
 import { handleIndex } from './routes/general/route';
 import { createConnection } from 'typeorm';
 
 // attempt to define the env vars using the provided type
-const envVars = {
-    SERVER_PORT: String,
-} as const;
+const envVars: Nullable<{
+    SERVER_PORT?: string,
+}> = {} as const;   
 
-const envs = defineEnvs<typeof envVars>(envVars);
+const envs = GlobalConfig.defineEnvs<typeof envVars>(envVars);
 
 // if envs it not defined, there was a problem finding all of the envs
 if (!envs) {

@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 export type Nullable<T> = T | null;
 export type IndexedObject = Record<string, any>;
 
-export const defineEnvs = <T>(envs: T): Nullable<T | any> => {
+const buildEnvs = <T>(envs: T): Nullable<T | any> => {
     try {
         dotenv.config();
     } catch (except) {
@@ -19,4 +19,20 @@ export const defineEnvs = <T>(envs: T): Nullable<T | any> => {
     });
 
     return cfg;
+};
+
+export class GlobalConfig {
+    private static envs: any;
+
+    public static defineEnvs<T>(obj: T): Nullable<T> {
+        if (!this.envs) {
+            this.envs = buildEnvs<T>(obj);
+        }
+
+        return this.envs as T;
+    }
+
+    public static getEnv(key: string): any {
+        return this.envs[key];
+    }
 };
